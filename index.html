@@ -1,116 +1,255 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Luxora — Hubs</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg-1: #000000;
-      --bg-2: #001a33;
-      --accent-blue: #2fb6ff;
-      --accent-red: #0055ff;
-      --text: #eef7ff;
-      --muted: rgba(238,247,255,0.7);
-      --shadow: 0 10px 30px rgba(2,6,23,0.6);
-      font-family: 'Inter', sans-serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luxora - Coming Soon</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0a0a1a, #1a1a2e, #16213e);
+    color:white;
+    overflow-x:hidden;
+}
 
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%;width:100%}
-    body{
-      background: radial-gradient(1200px 600px at 10% 20%, rgba(47,182,255,0.08), transparent 8%),
-                  radial-gradient(900px 500px at 90% 80%, rgba(0,85,255,0.05), transparent 10%),
-                  linear-gradient(120deg,var(--bg-1), var(--bg-2));
-      color:var(--text);
-      overflow-x:hidden;
-      display:flex;align-items:center;justify-content:center;
-      padding:20px;
-      animation:bgShift 15s ease-in-out infinite alternate;
-    }
+/* Main Container */
+.main-container {
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:2rem;
+    position:relative;
+}
 
-    @keyframes bgShift {
-      0%{background: radial-gradient(1200px 600px at 10% 20%, rgba(47,182,255,0.08), transparent 8%), radial-gradient(900px 500px at 90% 80%, rgba(0,85,255,0.05), transparent 10%), linear-gradient(120deg,var(--bg-1), var(--bg-2));}
-      50%{background: radial-gradient(1200px 600px at 10% 20%, rgba(0,85,255,0.08), transparent 8%), radial-gradient(900px 500px at 90% 80%, rgba(47,182,255,0.05), transparent 10%), linear-gradient(120deg,var(--bg-2), var(--bg-1));}
-      100%{background: radial-gradient(1200px 600px at 10% 20%, rgba(47,182,255,0.08), transparent 8%), radial-gradient(900px 500px at 90% 80%, rgba(0,85,255,0.05), transparent 10%), linear-gradient(120deg,var(--bg-1), var(--bg-2));}
-    }
+/* Floating Background Circles */
+.bg-elements { position:absolute; top:0; left:0; width:100%; height:100%; overflow:hidden; z-index:1; }
+.bg-circle {
+    position:absolute;
+    border-radius:50%;
+    background: rgba(255,255,255,0.1);
+    animation: float 20s infinite linear;
+}
+@keyframes float {
+    0% { transform: translateY(100vh) rotate(0deg); opacity:0; }
+    10% { opacity:1; }
+    90% { opacity:1; }
+    100% { transform: translateY(-100px) rotate(360deg); opacity:0; }
+}
 
-    .bg-overlay{
-      position:fixed;inset:0;z-index:0;pointer-events:none;
-      background: conic-gradient(from 120deg at 50% 50%, rgba(47,182,255,0.06), rgba(0,85,255,0.06), rgba(47,182,255,0.06));
-      mix-blend-mode:overlay;opacity:0.8;animation:spin 30s linear infinite;
-    }
-    @keyframes spin{to{transform:rotate(360deg)}}
+/* Logo Section */
+.logo-section {
+    z-index:10;
+    text-align:center;
+    animation: fadeInUp 1s ease-out;
+}
+.logo-placeholder {
+    width:180px; height:180px;
+    margin:0 auto 1.5rem;
+    border-radius:50%;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    display:flex; align-items:center; justify-content:center;
+    border:1px solid rgba(255,255,255,0.2);
+    box-shadow:0 8px 32px rgba(0,0,0,0.3);
+    transition: all 0.5s ease;
+    animation: neonGlow 2s ease-in-out infinite alternate, rotateLogo 10s linear infinite;
+}
+.logo-placeholder:hover {
+    transform: scale(1.1) rotate(10deg);
+    box-shadow:0 15px 50px rgba(255,255,255,0.6);
+}
+.logo-image { max-width:80%; max-height:80%; object-fit:contain; transition: transform 0.5s ease; }
+.logo-placeholder:hover .logo-image { transform: rotate(20deg) scale(1.05); }
 
-    .card{
-      position:relative;z-index:2;width:100%;max-width:1100px;border-radius:24px;padding:24px;
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      box-shadow:var(--shadow);backdrop-filter: blur(8px);overflow:hidden;border:1px solid rgba(255,255,255,0.04);
-      animation:fadeInCard 1s ease forwards;
-    }
-    @keyframes fadeInCard{0%{opacity:0;transform:translateY(20px) scale(0.95);}100%{opacity:1;transform:translateY(0) scale(1);}}
+@keyframes rotateLogo { 0%{transform:rotate(0deg);} 50%{transform:rotate(5deg);} 100%{transform:rotate(0deg);} }
+@keyframes neonGlow { 0%{box-shadow:0 0 10px #f72585;} 50%{box-shadow:0 0 20px #4cc9f0;} 100%{box-shadow:0 0 10px #f72585;} }
 
-    .brand{display:flex;flex-direction:column;align-items:center;gap:14px;margin-bottom:22px;animation:fadeInBrand 1.2s ease forwards;}
-    @keyframes fadeInBrand{0%{opacity:0;transform:translateY(-20px) scale(0.9);}100%{opacity:1;transform:translateY(0) scale(1);}}
+.brand-title { font-size:4rem; font-weight:800; margin-bottom:0.5rem; 
+background: linear-gradient(45deg,#f72585,#4361ee,#4cc9f0); 
+-webkit-background-clip:text; -webkit-text-fill-color:transparent; animation: pulse 2s infinite; }
+.coming-soon-text { font-size:2rem; font-weight:600; margin-bottom:1rem; color:#72efdd; text-shadow:0 0 15px rgba(114,239,221,0.5); }
+.brand-subtitle { font-size:1.25rem; color:#d1d5db; margin-bottom:0.5rem; }
+.brand-info { display:flex; align-items:center; justify-content:center; gap:0.5rem; font-size:0.875rem; color:#9ca3af; margin-bottom:1rem; }
+.indian-flag { display:inline-flex; margin:0 5px; }
+.saffron,.white,.green { width:8px; height:16px; }
+.saffron{background:#ff9933;} .white{background:#fff; position: relative;}
+.white::after{content:""; position:absolute; width:6px; height:6px; background:#000046; border-radius:50%; top:5px; left:1px;}
+.green{background:#138808;}
 
-    .logo{
-      width:120px;height:120px;border-radius:22px;
-      background:linear-gradient(135deg,var(--accent-blue),var(--accent-red));
-      display:flex;align-items:center;justify-content:center;
-      box-shadow:0 8px 30px rgba(47,182,255,0.12), 0 6px 18px rgba(0,85,255,0.08);
-      transform:translateZ(0);
-      animation:logo-pop 1.5s cubic-bezier(.2,.9,.3,1);
-    }
-    .logo img{width:80%;height:80%;object-fit:contain;border-radius:20px;animation:logo-fade 1.5s ease forwards;}
-    @keyframes logo-pop{0%{transform:scale(.6) rotate(-14deg);opacity:0}60%{transform:scale(1.06) rotate(6deg)}100%{transform:scale(1) rotate(0)}}
-    @keyframes logo-fade{0%{opacity:0;}100%{opacity:1;}}
+/* Countdown */
+.countdown { display:grid; grid-template-columns:repeat(auto-fit,minmax(80px,1fr)); gap:1rem; max-width:600px; margin:2rem auto 3rem; z-index:10; animation: fadeInUp 1s ease-out;}
+.countdown-item { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius:12px; padding:1rem; border:1px solid rgba(255,255,255,0.2); text-align:center; transition:all 0.3s ease; }
+.countdown-item:hover{transform:translateY(-5px) scale(1.05); box-shadow:0 10px 30px rgba(0,0,0,0.5);}
+.countdown-number{ font-size:2.5rem; font-weight:bold; background:linear-gradient(45deg,#f72585,#4361ee); -webkit-background-clip:text; -webkit-text-fill-color:transparent;}
+.countdown-label{ font-size:0.875rem; color:#d1d5db; }
 
-    h1.site-title{font-weight:800;font-size:2rem;letter-spacing:0.6px;margin:0;color:var(--accent-blue);text-align:center;text-shadow:0 0 20px var(--accent-blue);animation:glow 2s ease-in-out infinite alternate;}
-    @keyframes glow{from{text-shadow:0 0 10px var(--accent-blue);}to{text-shadow:0 0 25px var(--accent-blue);}}
-    p.tagline{margin:0;color:var(--muted);font-weight:600;text-align:center;animation:fadeInTagline 1.5s ease forwards;}
-    @keyframes fadeInTagline{0%{opacity:0;transform:translateY(10px);}100%{opacity:1;transform:translateY(0);}}
+/* Features */
+.features { max-width:1000px; margin:3rem auto; text-align:center; animation: fadeInUp 1s ease-out;}
+.section-title { font-size:2.5rem; font-weight:bold; margin-bottom:2rem; background:linear-gradient(45deg,#f72585,#4361ee); -webkit-background-clip:text; -webkit-text-fill-color:transparent;}
+.features-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem; }
+.feature-card { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border-radius:12px; padding:1.5rem; border:1px solid rgba(255,255,255,0.1); transition: all 0.3s ease; position:relative; overflow:hidden; animation: floatCard 3s ease-in-out infinite alternate;}
+.feature-card::before{ content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent); transition:left 0.5s; }
+.feature-card:hover::before{ left:100%; }
+.feature-card:hover{ transform:translateY(-10px) scale(1.05); border-color:#4361ee; box-shadow:0 20px 40px rgba(0,0,0,0.3);}
+.feature-icon{ font-size:2.5rem; margin-bottom:1rem; display:block; background: linear-gradient(45deg,#f72585,#4361ee); -webkit-background-clip:text; -webkit-text-fill-color:transparent; animation: pulse 2s infinite;}
+.feature-title{ font-size:1.5rem; font-weight:600; margin-bottom:0.75rem; color:white;}
+.feature-desc{ color:#d1d5db; line-height:1.5; }
 
-    .hubs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:20px;}
+@keyframes floatCard{0%{transform:translateY(0);}50%{transform:translateY(5px);}100%{transform:translateY(0);}}
 
-    .hub{
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:12px;
-      align-items:flex-start;transition:transform .45s cubic-bezier(.2,.9,.3,1), box-shadow .45s;cursor:pointer;
-      border:1px solid rgba(255,255,255,0.03);
-      animation:fadeInHub 0.8s ease forwards;
-    }
-    .hub h3{margin:0;font-size:1.2rem}
-    .hub p{margin:0;color:var(--muted);font-weight:500}
-    .hub:hover{transform:translateY(-10px) scale(1.05) rotate(-1deg);box-shadow:0 18px 60px rgba(2,6,23,0.6);}
-    @keyframes fadeInHub{0%{opacity:0;transform:translateY(20px) scale(0.95);}100%{opacity:1;transform:translateY(0) scale(1);}}
+/* About */
+.about { max-width:900px; margin:3rem auto; text-align:center; animation: fadeInUp 1s ease-out; }
+.about-card { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border-radius:12px; padding:2rem; border:1px solid rgba(255,255,255,0.1); margin-bottom:2rem; transition: all 0.3s ease;}
+.about-card:hover{ transform: scale(1.02); box-shadow:0 15px 35px rgba(0,0,0,0.4); }
+.about-text{ font-size:1.125rem; color:#d1d5db; line-height:1.6; text-align:center;}
 
-    footer{margin-top:24px;text-align:center;color:var(--muted);font-weight:500;animation:fadeUp 2s ease;font-size:0.9rem;}
-    @keyframes fadeUp {from{opacity:0;transform:translateY(30px) scale(0.95);}to{opacity:1;transform:translateY(0) scale(1);}}
+/* Telegram */
+.telegram-section { margin:3rem 0; text-align:center; animation: fadeInUp 1s ease-out;}
+.telegram-text{ font-size:1.25rem; margin-bottom:1.5rem; color:#d1d5db; }
+.telegram-btn{ display:inline-flex; align-items:center; background:#0088cc; color:white; font-weight:600; padding:1rem 2rem; border-radius:50px; text-decoration:none; transition:all 0.3s ease; box-shadow:0 4px 15px rgba(0,136,204,0.3); font-size:1.125rem; animation: pulse 2s infinite, glow 2s infinite alternate;}
+.telegram-btn:hover{ background:#006ba3; transform:scale(1.05) rotate(-2deg); box-shadow:0 6px 20px rgba(0,136,204,0.5);}
+.telegram-icon{ width:24px; height:24px; margin-right:0.75rem; fill:currentColor; }
 
-    @media(max-width:600px){.hubs{grid-template-columns:1fr;}}
-  </style>
+/* Glow animation for Telegram button */
+@keyframes glow{
+    0%{ box-shadow:0 0 10px #00c6ff; }
+    50%{ box-shadow:0 0 20px #00e5ff; }
+    100%{ box-shadow:0 0 10px #00c6ff; }
+}
+
+/* Footer */
+.footer{text-align:center; color:#9ca3af; font-size:0.875rem; margin-top:3rem; padding:2rem 1rem; border-top:1px solid rgba(255,255,255,0.1);}
+.footer-heart{color:#f72585; animation:pulse 1.5s infinite;}
+
+/* Animations */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);} }
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.7;} }
+
+@media(max-width:768px){
+.brand-title{font-size:3rem;}
+.coming-soon-text{font-size:1.5rem;}
+.countdown{grid-template-columns:repeat(2,1fr); max-width:400px;}
+.features-grid{grid-template-columns:1fr;}
+}
+</style>
 </head>
 <body>
-  <div class="bg-overlay" aria-hidden="true"></div>
-  <div class="card">
-    <header class="brand">
-      <div class="logo"><img src="data/logo.png" alt="Luxora Logo"></div>
-      <h1 class="site-title">Luxora</h1>
-      <p class="tagline">Luxora is a website that offers premium content for free with a sleek and modern experience.</p>
-    </header>
 
-    <section class="hubs">
-      <article class="hub"><h3><a href="anime.html">Anime Hub</a></h3><p>All anime shows and movies.</p></article>
-      <article class="hub"><h3><a href="study.html">Study Hub</a></h3><p>Pw and Next Topper</p></article>
-      <article class="hub"><h3><a href="movies.html">Movie Hub</a></h3><p>Latest movies and trailers.</p></article>
-      <article class="hub"><h3><a href="premium.html">Premium Hub</a></h3><p>Exclusive premium content.</p></article>
-      <article class="hub"><h3><a href="books.html">Books Hub</a></h3><p>Ebooks and reading lists.</p></article>
-    </section>
+<div class="main-container">
 
-    <footer>
-      Made by Shri Groups | Made in India | All rights reserved © Luxora
-    </footer>
-  </div>
+    <!-- Background -->
+    <div class="bg-elements">
+        <div class="bg-circle" style="width:60px; height:60px; left:10%; animation-duration:15s;"></div>
+        <div class="bg-circle" style="width:40px; height:40px; left:30%; animation-duration:18s;"></div>
+        <div class="bg-circle" style="width:80px; height:80px; left:50%; animation-duration:20s;"></div>
+        <div class="bg-circle" style="width:50px; height:50px; left:70%; animation-duration:22s;"></div>
+    </div>
+
+    <div class="content">
+        <!-- Logo -->
+        <section class="logo-section">
+            <div class="logo-placeholder">
+                <img src="your-logo.png" alt="Luxora Logo" class="logo-image">
+            </div>
+            <h1 class="brand-title">Luxora</h1>
+            <div class="coming-soon-text">Coming Soon</div>
+            <p class="brand-subtitle">Created by Shri Groups</p>
+            <div class="brand-info">
+                <span>Made in</span>
+                <div class="indian-flag">
+                    <div class="saffron"></div>
+                    <div class="white"></div>
+                    <div class="green"></div>
+                </div>
+                <span>India</span>
+                <span>•</span>
+                <span>All Rights Reserved</span>
+            </div>
+        </section>
+
+        <!-- Countdown -->
+        <section class="countdown" id="countdown">
+            <div class="countdown-item"><span class="countdown-number" id="days">00</span><span class="countdown-label">Days</span></div>
+            <div class="countdown-item"><span class="countdown-number" id="hours">00</span><span class="countdown-label">Hours</span></div>
+            <div class="countdown-item"><span class="countdown-number" id="minutes">00</span><span class="countdown-label">Minutes</span></div>
+            <div class="countdown-item"><span class="countdown-number" id="seconds">00</span><span class="countdown-label">Seconds</span></div>
+        </section>
+
+        <!-- Features -->
+        <section class="features">
+            <h2 class="section-title">What's Coming</h2>
+            <div class="features-grid">
+                <div class="feature-card"><i class="feature-icon fas fa-gem"></i><h3 class="feature-title">Premium Experience</h3><p class="feature-desc">Luxury redefined with cutting-edge technology and elegant design.</p></div>
+                <div class="feature-card"><i class="feature-icon fas fa-rocket"></i><h3 class="feature-title">Lightning Fast</h3><p class="feature-desc">Next-generation performance that delivers speed and responsiveness.</p></div>
+                <div class="feature-card"><i class="feature-icon fas fa-shield-alt"></i><h3 class="feature-title">Ultra Secure</h3><p class="feature-desc">State-of-the-art security measures protect your data and privacy.</p></div>
+                <div class="feature-card"><i class="feature-icon fas fa-magic"></i><h3 class="feature-title">AI Powered</h3><p class="feature-desc">Intelligent features that adapt to your needs for a personalized experience.</p></div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section class="about">
+            <h2 class="section-title">About Luxora</h2>
+            <div class="about-card"><p class="about-text">Luxora is proudly created by Shri Groups in India. We combine luxury with innovation, creating products that are both beautiful and functional.</p></div>
+        </section>
+
+        <!-- Telegram -->
+        <section class="telegram-section">
+            <p class="telegram-text">Stay updated with our Telegram channel</p>
+            <a href="tg://join?invite=C5gErLhmU2MxOWNl" 
+               onclick="window.open('https://t.me/+C5gErLhmU2MxOWNl','_blank'); return true;" 
+               target="_blank" class="telegram-btn">
+                <svg class="telegram-icon" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 
+                12 12 12-5.373 12-12S18.627 0 12 0zm5.894 
+                8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 
+                1.394c-.14.141-.259.259-.374.261l.213-3.053 
+                5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 
+                4.326-2.96-.924c-.64-.203-.658-.64.136-.954l11.566-4.458c.538-.196 
+                1.006.128.832.941z"/></svg>
+                Join Our Telegram
+            </a>
+            <p style="margin-top:1rem; color:#72efdd; font-size:1rem;">Contact: @shreyash366</p>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2025 Shri Groups. All Rights Reserved.</p>
+            <p>Made with <span class="footer-heart">❤️</span> in India</p>
+        </footer>
+
+    </div>
+</div>
+
+<script>
+function updateCountdown() {
+    const launchDate = new Date('October 1, 2025 00:00:00').getTime();
+    const now = new Date().getTime();
+    const distance = launchDate - now;
+
+    if(distance < 0){
+        document.getElementById('days').innerText='00';
+        document.getElementById('hours').innerText='00';
+        document.getElementById('minutes').innerText='00';
+        document.getElementById('seconds').innerText='00';
+        return;
+    }
+
+    const days=Math.floor(distance/(1000*60*60*24));
+    const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+    const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
+    const seconds=Math.floor((distance%(1000*60))/1000);
+
+    document.getElementById('days').innerText=days.toString().padStart(2,'0');
+    document.getElementById('hours').innerText=hours.toString().padStart(2,'0');
+    document.getElementById('minutes').innerText=minutes.toString().padStart(2,'0');
+    document.getElementById('seconds').innerText=seconds.toString().padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown,1000);
+</script>
+
 </body>
 </html>
