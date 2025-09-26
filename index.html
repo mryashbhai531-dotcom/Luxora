@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Luxora — Hubs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-1: #000000;
+      --bg-2: #001a33;
+      --accent-blue: #2fb6ff;
+      --accent-red: #0055ff;
+      --text: #eef7ff;
+      --muted: rgba(238,247,255,0.7);
+      --shadow: 0 10px 30px rgba(2,6,23,0.6);
+      font-family: 'Inter', sans-serif;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;width:100%}
+    body{
+      background: radial-gradient(1200px 600px at 10% 20%, rgba(47,182,255,0.08), transparent 8%),
+                  radial-gradient(900px 500px at 90% 80%, rgba(0,85,255,0.05), transparent 10%),
+                  linear-gradient(120deg,var(--bg-1), var(--bg-2));
+      color:var(--text);
+      overflow-x:hidden;
+      display:flex;align-items:center;justify-content:center;
+      padding:20px;
+      animation:bgShift 15s ease-in-out infinite alternate;
+    }
+
+    @keyframes bgShift {
+      0%{background: radial-gradient(1200px 600px at 10% 20%, rgba(47,182,255,0.08), transparent 8%), radial-gradient(900px 500px at 90% 80%, rgba(0,85,255,0.05), transparent 10%), linear-gradient(120deg,var(--bg-1), var(--bg-2));}
+      50%{background: radial-gradient(1200px 600px at 10% 20%, rgba(0,85,255,0.08), transparent 8%), radial-gradient(900px 500px at 90% 80%, rgba(47,182,255,0.05), transparent 10%), linear-gradient(120deg,var(--bg-2), var(--bg-1));}
+      100%{background: radial-gradient(1200px 600px at 10% 20%, rgba(47,182,255,0.08), transparent 8%), radial-gradient(900px 500px at 90% 80%, rgba(0,85,255,0.05), transparent 10%), linear-gradient(120deg,var(--bg-1), var(--bg-2));}
+    }
+
+    .bg-overlay{
+      position:fixed;inset:0;z-index:0;pointer-events:none;
+      background: conic-gradient(from 120deg at 50% 50%, rgba(47,182,255,0.06), rgba(0,85,255,0.06), rgba(47,182,255,0.06));
+      mix-blend-mode:overlay;opacity:0.8;animation:spin 30s linear infinite;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    .card{
+      position:relative;z-index:2;width:100%;max-width:1100px;border-radius:24px;padding:24px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      box-shadow:var(--shadow);backdrop-filter: blur(8px);overflow:hidden;border:1px solid rgba(255,255,255,0.04);
+      animation:fadeInCard 1s ease forwards;
+    }
+    @keyframes fadeInCard{0%{opacity:0;transform:translateY(20px) scale(0.95);}100%{opacity:1;transform:translateY(0) scale(1);}}
+
+    .brand{display:flex;flex-direction:column;align-items:center;gap:14px;margin-bottom:22px;animation:fadeInBrand 1.2s ease forwards;}
+    @keyframes fadeInBrand{0%{opacity:0;transform:translateY(-20px) scale(0.9);}100%{opacity:1;transform:translateY(0) scale(1);}}
+
+    .logo{
+      width:120px;height:120px;border-radius:22px;
+      background:linear-gradient(135deg,var(--accent-blue),var(--accent-red));
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:0 8px 30px rgba(47,182,255,0.12), 0 6px 18px rgba(0,85,255,0.08);
+      transform:translateZ(0);
+      animation:logo-pop 1.5s cubic-bezier(.2,.9,.3,1);
+    }
+    .logo img{width:80%;height:80%;object-fit:contain;border-radius:20px;animation:logo-fade 1.5s ease forwards;}
+    @keyframes logo-pop{0%{transform:scale(.6) rotate(-14deg);opacity:0}60%{transform:scale(1.06) rotate(6deg)}100%{transform:scale(1) rotate(0)}}
+    @keyframes logo-fade{0%{opacity:0;}100%{opacity:1;}}
+
+    h1.site-title{font-weight:800;font-size:2rem;letter-spacing:0.6px;margin:0;color:var(--accent-blue);text-align:center;text-shadow:0 0 20px var(--accent-blue);animation:glow 2s ease-in-out infinite alternate;}
+    @keyframes glow{from{text-shadow:0 0 10px var(--accent-blue);}to{text-shadow:0 0 25px var(--accent-blue);}}
+    p.tagline{margin:0;color:var(--muted);font-weight:600;text-align:center;animation:fadeInTagline 1.5s ease forwards;}
+    @keyframes fadeInTagline{0%{opacity:0;transform:translateY(10px);}100%{opacity:1;transform:translateY(0);}}
+
+    .hubs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:20px;}
+
+    .hub{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:12px;
+      align-items:flex-start;transition:transform .45s cubic-bezier(.2,.9,.3,1), box-shadow .45s;cursor:pointer;
+      border:1px solid rgba(255,255,255,0.03);
+      animation:fadeInHub 0.8s ease forwards;
+    }
+    .hub h3{margin:0;font-size:1.2rem}
+    .hub p{margin:0;color:var(--muted);font-weight:500}
+    .hub:hover{transform:translateY(-10px) scale(1.05) rotate(-1deg);box-shadow:0 18px 60px rgba(2,6,23,0.6);}
+    @keyframes fadeInHub{0%{opacity:0;transform:translateY(20px) scale(0.95);}100%{opacity:1;transform:translateY(0) scale(1);}}
+
+    footer{margin-top:24px;text-align:center;color:var(--muted);font-weight:500;animation:fadeUp 2s ease;font-size:0.9rem;}
+    @keyframes fadeUp {from{opacity:0;transform:translateY(30px) scale(0.95);}to{opacity:1;transform:translateY(0) scale(1);}}
+
+    @media(max-width:600px){.hubs{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+  <div class="bg-overlay" aria-hidden="true"></div>
+  <div class="card">
+    <header class="brand">
+      <div class="logo"><img src="data/logo.png" alt="Luxora Logo"></div>
+      <h1 class="site-title">Luxora</h1>
+      <p class="tagline">Luxora is a website that offers premium content for free with a sleek and modern experience.</p>
+    </header>
+
+    <section class="hubs">
+      <article class="hub"><h3><a href="anime.html">Anime Hub</a></h3><p>All anime shows and movies.</p></article>
+      <article class="hub"><h3><a href="study.html">Study Hub</a></h3><p>Pw and Next Topper</p></article>
+      <article class="hub"><h3><a href="movies.html">Movie Hub</a></h3><p>Latest movies and trailers.</p></article>
+      <article class="hub"><h3><a href="premium.html">Premium Hub</a></h3><p>Exclusive premium content.</p></article>
+      <article class="hub"><h3><a href="books.html">Books Hub</a></h3><p>Ebooks and reading lists.</p></article>
+    </section>
+
+    <footer>
+      Made by Shri Groups | Made in India | All rights reserved © Luxora
+    </footer>
+  </div>
+</body>
+</html>

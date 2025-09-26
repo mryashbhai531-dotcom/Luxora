@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Hub - Luxora</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-1: #0d0d1a;
+    --bg-2: #001a33;
+    --accent-blue: #2fb6ff;
+    --accent-red: #ff4d6d;
+    --text: #eef7ff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Inter',sans-serif;
+    background:linear-gradient(135deg,var(--bg-1),var(--bg-2));
+    color:var(--text);
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    animation:bgShift 12s ease-in-out infinite alternate;
+    overflow:hidden;
+    padding:20px;
+  }
+  @keyframes bgShift{
+    0%{background:linear-gradient(135deg,#0d0d1a,#001a33);}
+    50%{background:linear-gradient(135deg,#001a33,#0d0d1a);}
+    100%{background:linear-gradient(135deg,#0d0d1a,#001a33);}
+  }
+
+  .container{
+    width:100%;
+    max-width:800px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .logo{
+    width:140px;height:140px;border-radius:50%;
+    background:linear-gradient(135deg,var(--accent-blue),var(--accent-red));
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 20px auto;
+    animation:logo-pop 1.5s ease;
+    box-shadow:0 0 40px rgba(47,182,255,0.6),0 0 60px rgba(255,77,109,0.4);
+  }
+  .logo img{width:80%;height:80%;object-fit:contain;border-radius:50%;}
+  @keyframes logo-pop{0%{transform:scale(0);opacity:0}50%{transform:scale(1.3);}100%{transform:scale(1);opacity:1}}
+
+  h1{
+    font-size:2.5rem;color:var(--accent-blue);margin-bottom:20px;
+    animation:glow 2s ease-in-out infinite alternate;
+    text-shadow:0 0 15px var(--accent-blue),0 0 30px var(--accent-red);
+  }
+  @keyframes glow{
+    from{text-shadow:0 0 15px var(--accent-blue),0 0 25px var(--accent-red);}
+    to{text-shadow:0 0 30px var(--accent-blue),0 0 50px var(--accent-red);}
+  }
+
+  /* Menu Grid */
+  .menu{display:flex;flex-direction:column;gap:25px;width:100%;max-width:400px;margin-top:30px;}
+  .menu a{
+    display:flex;align-items:center;justify-content:center;
+    padding:20px;
+    border-radius:20px;
+    text-decoration:none;
+    color:white;
+    font-weight:700;
+    font-size:1.3rem;
+    background:linear-gradient(135deg,var(--accent-blue),var(--accent-red));
+    box-shadow:0 8px 35px rgba(47,182,255,0.5),0 4px 20px rgba(255,77,109,0.3);
+    transition:transform 0.4s ease, box-shadow 0.4s ease;
+    text-align:center;
+    animation:fadeIn 1s ease forwards;
+  }
+  .menu a:hover{transform:scale(1.1) rotate(-2deg);box-shadow:0 20px 60px rgba(47,182,255,0.7),0 10px 40px rgba(255,77,109,0.5);}
+  @keyframes fadeIn{0%{opacity:0;transform:translateY(25px);}100%{opacity:1;transform:translateY(0);}}
+
+  footer{margin-top:40px;color:var(--text);font-size:1.1rem;font-weight:700;text-shadow:0 0 10px var(--accent-blue),0 0 20px var(--accent-red);animation:footer-glow 2s ease-in-out infinite alternate;}
+  @keyframes footer-glow{from{text-shadow:0 0 10px var(--accent-blue),0 0 20px var(--accent-red);}to{text-shadow:0 0 25px var(--accent-blue),0 0 50px var(--accent-red);}}
+
+  /* Password Section */
+  #password-section{animation:fadeIn 2s ease forwards; display:flex;flex-direction:column;align-items:center;justify-content:center;}
+  #password-input{
+    padding:12px 18px;font-size:1.1rem;
+    border:none;border-radius:10px;outline:none;
+    box-shadow:0 0 20px var(--accent-blue);
+    text-align:center;margin-top:10px;
+  }
+  #submit-btn{
+    margin-top:20px;padding:12px 25px;font-size:1.1rem;
+    border:none;border-radius:10px;cursor:pointer;
+    background:linear-gradient(135deg,var(--accent-blue),var(--accent-red));
+    color:white;font-weight:700;
+    box-shadow:0 0 20px rgba(47,182,255,0.6);
+    transition:transform 0.3s ease;
+  }
+  #submit-btn:hover{transform:scale(1.05);}
+
+  .shake{animation:shake 0.4s ease;}
+  @keyframes shake{
+    0%{transform:translateX(0);}25%{transform:translateX(-8px);}
+    50%{transform:translateX(8px);}75%{transform:translateX(-8px);}
+    100%{transform:translateX(0);}
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <!-- Password Section -->
+    <div id="password-section">
+      <div class="logo">
+        <img src="data/logo.png" alt="Luxora Logo">
+      </div>
+      <h1>Enter Password</h1>
+      <input type="password" id="password-input" placeholder="Enter password">
+      <br>
+      <button id="submit-btn">Unlock</button>
+      <p style="margin-top:20px;">Contact Owner on Telegram: <b>@shreyash366</b></p>
+    </div>
+
+    <!-- Main Website (Hidden until correct password) -->
+    <div id="main-content" style="display:none;">
+      <div class="logo">
+        <img src="data/logo.png" alt="Luxora Logo">
+      </div>
+      <h1>Study Hub</h1>
+      <div class="menu">
+        <a href="pw.html">Pw</a>
+        <a href="next-topper.html">Next Topper</a>
+      </div>
+      <footer>Made by Shri Groups | Made in India | All rights reserved © Luxora</footer>
+    </div>
+  </div>
+
+  <script>
+    const correctPassword = "yash098";
+    const submitBtn = document.getElementById("submit-btn");
+    const passwordInput = document.getElementById("password-input");
+    const passwordSection = document.getElementById("password-section");
+    const mainContent = document.getElementById("main-content");
+
+    submitBtn.addEventListener("click", () => {
+      if(passwordInput.value === correctPassword){
+        passwordSection.style.display = "none";
+        mainContent.style.display = "flex";
+        mainContent.style.flexDirection = "column";
+        mainContent.style.alignItems = "center";
+        mainContent.style.justifyContent = "center";
+      } else {
+        passwordInput.classList.add("shake");
+        setTimeout(()=> passwordInput.classList.remove("shake"), 500);
+      }
+    });
+
+    // Disable Right Click + DevTools
+    document.addEventListener("contextmenu", e => e.preventDefault());
+    document.addEventListener("keydown", e => {
+      if(e.keyCode == 123 || 
+        (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) ||
+        (e.ctrlKey && e.keyCode === 85)){
+        e.preventDefault();
+      }
+    });
+  </script>
+</body>
+</html>
+

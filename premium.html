@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-1: #000000;
+      --bg-2: #001a33;
+      --accent-blue: #2fb6ff;
+      --accent-red: #ff4d6d;
+      --text: #eef7ff;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, var(--bg-1), var(--bg-2));
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      animation: bgShift 10s ease-in-out infinite alternate;
+    }
+    @keyframes bgShift {
+      0% {background: linear-gradient(135deg,#000000,#001a33);}
+      50% {background: linear-gradient(135deg,#001a33,#000000);}
+      100% {background: linear-gradient(135deg,#000000,#001a33);}
+    }
+
+    /* Logo */
+    .logo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: linear-gradient(135deg,var(--accent-blue),var(--accent-red));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 20px auto;
+      box-shadow: 0 0 50px rgba(47,182,255,0.7), 0 0 80px rgba(255,77,109,0.5);
+      animation: logoBounce 2s ease-in-out infinite;
+    }
+    .logo img {
+      width: 80%;
+      height: 80%;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+    @keyframes logoBounce {
+      0%,100%{transform: translateY(0);}
+      50%{transform: translateY(-15px);}
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: var(--accent-blue);
+      margin-bottom: 30px;
+      text-shadow: 0 0 20px var(--accent-blue), 0 0 40px var(--accent-red);
+      animation: textGlow 2s ease-in-out infinite alternate;
+    }
+    @keyframes textGlow {
+      from {text-shadow: 0 0 15px var(--accent-blue), 0 0 30px var(--accent-red);}
+      to {text-shadow: 0 0 30px var(--accent-blue), 0 0 60px var(--accent-red);}
+    }
+
+    /* Password Section */
+    #password-section {
+      margin-top: 50px;
+      text-align: center;
+      animation: fadeIn 2s ease forwards;
+    }
+    #password-input {
+      padding: 10px 15px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      text-align: center;
+      box-shadow: 0 0 15px var(--accent-blue);
+    }
+    #submit-btn {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: var(--accent-blue);
+      color: #fff;
+      font-weight: bold;
+      box-shadow: 0 0 20px var(--accent-blue),0 0 30px var(--accent-red);
+      transition: transform 0.2s ease;
+    }
+    #submit-btn:hover { transform: scale(1.1); }
+
+    /* Main Website */
+    #main-content { display: none; text-align: center; margin-top: 30px; }
+    .apk-card {
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 15px;
+      margin: 15px;
+      box-shadow: 0 0 25px rgba(47,182,255,0.4);
+      animation: fadeInUp 1s ease forwards;
+    }
+    .apk-card img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+    .apk-card a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 15px;
+      background: var(--accent-blue);
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform 0.2s ease;
+    }
+    .apk-card a:hover { transform: scale(1.1); }
+    @keyframes fadeIn {0%{opacity:0;transform:translateY(20px);}100%{opacity:1;transform:translateY(0);}}
+    @keyframes fadeInUp {0%{opacity:0;transform:translateY(40px);}100%{opacity:1;transform:translateY(0);}}
+
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 600;
+      text-shadow: 0 0 15px var(--accent-blue), 0 0 25px var(--accent-red);
+      animation: footerGlow 2s ease-in-out infinite alternate;
+    }
+    @keyframes footerGlow {
+      from {text-shadow: 0 0 10px var(--accent-blue),0 0 20px var(--accent-red);}
+      to {text-shadow: 0 0 25px var(--accent-blue),0 0 50px var(--accent-red);}
+    }
+  </style>
+</head>
+<body>
+  <!-- Password Section -->
+  <div id="password-section">
+    <div class="logo">
+      <img src="data/logo.png" alt="Website Logo">
+    </div>
+    <h1>Enter Password</h1>
+    <input type="password" id="password-input" placeholder="Enter password">
+    <br>
+    <button id="submit-btn">Unlock</button>
+  </div>
+
+  <!-- Main Website -->
+  <div id="main-content">
+    <div class="logo">
+      <img src="data/logo.png" alt="Website Logo">
+    </div>
+    <h1>Premium Hub</h1>
+
+    <div class="apk-card">
+      <img src="apk1.png" alt="APK Logo">
+      <h2>Premium APK 1</h2>
+      <a href="#">Download</a>
+    </div>
+    <div class="apk-card">
+      <img src="apk2.png" alt="APK Logo">
+      <h2>Premium APK 2</h2>
+      <a href="#">Download</a>
+    </div>
+
+    <footer>
+      Made by Shri Groups | Made in India | © Premium Hub
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('submit-btn').addEventListener('click', () => {
+      const input = document.getElementById('password-input').value;
+      if(input === 'yash098'){
+        document.getElementById('password-section').style.display = 'none';
+        document.getElementById('main-content').style.display = 'block';
+      } else {
+        alert('Wrong Password!');
+      }
+    });
+
+    // Disable DevTools shortcut keys
+    document.onkeydown = function(e) {
+      if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 73)){
+        return false;
+      }
+    };
+  </script>
+</body>
+</html>
