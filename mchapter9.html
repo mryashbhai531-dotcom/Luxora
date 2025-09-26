@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 9 - NextTopper</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-dark:#000814;
+      --bg-blue:#001d3d;
+      --accent:#00b4d8;
+      --accent-2:#0077b6;
+      --text:#e0f7ff;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Inter',sans-serif;
+      background:linear-gradient(135deg,var(--bg-dark),var(--bg-blue));
+      color:var(--text);
+      min-height:100vh;
+      padding:28px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      animation:bgShift 12s ease-in-out infinite alternate;
+    }
+
+    @keyframes bgShift{
+      0%{background:linear-gradient(135deg,#000814,#001d3d)}
+      50%{background:linear-gradient(135deg,#001d3d,#000814)}
+      100%{background:linear-gradient(135deg,#000814,#001d3d)}
+    }
+
+    header{
+      text-align:center;
+      margin-bottom:30px;
+    }
+    .logo{
+      width:160px;
+      height:160px;
+      border-radius:12px;
+      background:linear-gradient(135deg,var(--accent-2),var(--accent));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin:0 auto 16px;
+      box-shadow:0 8px 40px rgba(0,180,216,0.2), inset 0 -6px 18px rgba(0,0,0,0.25);
+      animation:logoFloat 3s ease-in-out infinite;
+    }
+    .logo img{
+      width:90%;
+      height:90%;
+      object-fit:cover;
+      border-radius:12px;
+    }
+    @keyframes logoFloat{0%{transform:translateY(0)}50%{transform:translateY(-10px)}100%{transform:translateY(0)}}
+
+    h1{
+      font-size:2.4rem;
+      color:var(--accent);
+      margin-bottom:8px;
+      text-shadow:0 6px 28px rgba(0,180,216,0.12);
+    }
+    .subtitle{
+      color:rgba(224,247,255,0.75);
+      margin-bottom:24px;
+    }
+
+    .lecture-container{
+      width:100%;
+      max-width:900px;
+      display:flex;
+      flex-direction:column;
+      gap:28px;
+      align-items:center;
+    }
+
+    .lecture{
+      width:100%;
+      background:linear-gradient(180deg, rgba(0,29,61,0.65), rgba(0,29,61,0.5));
+      padding:14px;
+      border-radius:14px;
+      box-shadow:0 12px 40px rgba(0,0,0,0.45), 0 6px 20px rgba(0,180,216,0.06);
+    }
+
+    .lecture h2{
+      color:var(--accent);
+      margin-bottom:12px;
+      text-align:center;
+      font-size:1.3rem;
+    }
+
+    .video-wrapper{
+      width:100%;
+      height:450px;
+      border-radius:12px;
+      overflow:hidden;
+    }
+
+    footer{
+      margin-top:40px;
+      color:rgba(224,247,255,0.8);
+      font-weight:600;
+      text-align:center;
+      font-size:.95rem;
+    }
+
+    @media(max-width:600px){
+      .logo{width:140px;height:140px;}
+      h1{font-size:2rem;}
+      .video-wrapper{height:280px;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="data/logo.png" alt="NextTopper Logo">
+    </div>
+    <h1>Chapter 9 - Some Applications of Trigonometry</h1>
+    <div class="subtitle">All lectures for Class 10</div>
+  </header>
+
+  <main class="lecture-container">
+    <!-- Lecture 1 -->
+    <div class="lecture">
+      <h2>Lecture 1</h2>
+      <div id="rumble_v6x252i" class="video-wrapper"></div>
+      <script>
+        !function(r,u,m,b,l,e){r._Rumble=b,r[b]||(r[b]=function(){(r[b]._=r[b]._||[]).push(arguments);if(r[b]._.length==1){l=u.createElement(m),e=u.getElementsByTagName(m)[0],l.async=1,l.src="https://rumble.com/embedJS/u4n4rv8"+(arguments[1].video?'.'+arguments[1].video:'')+"/?url="+encodeURIComponent(location.href)+"&args="+encodeURIComponent(JSON.stringify([].slice.apply(arguments))),e.parentNode.insertBefore(l,e)}})}(window, document, "script", "Rumble");
+        Rumble("play", {"video":"v6x252i","div":"rumble_v6x252i"});
+      </script>
+    </div>
+
+    <!-- Lecture 2 -->
+    <div class="lecture">
+      <h2>Lecture 2</h2>
+      <div id="rumble_v6x25ks" class="video-wrapper"></div>
+      <script>
+        Rumble("play", {"video":"v6x25ks","div":"rumble_v6x25ks"});
+      </script>
+    </div>
+
+    <!-- Lecture 3 -->
+    <div class="lecture">
+      <h2>Lecture 3</h2>
+      <div id="rumble_v6x25x4" class="video-wrapper"></div>
+      <script>
+        Rumble("play", {"video":"v6x25x4","div":"rumble_v6x25x4"});
+      </script>
+    </div>
+
+    <!-- Lecture 4 -->
+    <div class="lecture">
+      <h2>Lecture 4</h2>
+      <div id="rumble_v6x26hc" class="video-wrapper"></div>
+      <script>
+        Rumble("play", {"video":"v6x26hc","div":"rumble_v6x26hc"});
+      </script>
+    </div>
+
+    <!-- Lecture 5 -->
+    <div class="lecture">
+      <h2>Lecture 5</h2>
+      <div id="rumble_v6x26xq" class="video-wrapper"></div>
+      <script>
+        Rumble("play", {"video":"v6x26xq","div":"rumble_v6x26xq"});
+      </script>
+    </div>
+
+    <!-- Lecture 6 -->
+    <div class="lecture">
+      <h2>Lecture 6</h2>
+      <div id="rumble_v6x29q4" class="video-wrapper"></div>
+      <script>
+        Rumble("play", {"video":"v6x29q4","div":"rumble_v6x29q4"});
+      </script>
+    </div>
+  </main>
+
+  <footer>
+    Made by Shri Groups | Made in India | All rights reserved © Luxora
+  </footer>
+</body>
+</html>
