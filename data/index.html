@@ -99,7 +99,6 @@ background: linear-gradient(45deg,#f72585,#4361ee,#4cc9f0);
 .feature-title{ font-size:1.5rem; font-weight:600; margin-bottom:0.75rem; color:white;}
 .feature-desc{ color:#d1d5db; line-height:1.5; }
 
-/* Float Card Animation */
 @keyframes floatCard{0%{transform:translateY(0);}50%{transform:translateY(5px);}100%{transform:translateY(0);}}
 
 /* About */
@@ -112,8 +111,8 @@ background: linear-gradient(45deg,#f72585,#4361ee,#4cc9f0);
 .telegram-section { margin:3rem 0; text-align:center; animation: fadeInUp 1s ease-out;}
 .telegram-text{ font-size:1.25rem; margin-bottom:1.5rem; color:#d1d5db; }
 .telegram-btn{ display:inline-flex; align-items:center; background:#0088cc; color:white; font-weight:600; padding:1rem 2rem; border-radius:50px; text-decoration:none; transition:all 0.3s ease; box-shadow:0 4px 15px rgba(0,136,204,0.3); font-size:1.125rem; animation: pulse 2s infinite;}
-.telegram-btn:hover{ background:#006ba3; transform:scale(1.05); box-shadow:0 6px 20px rgba(0,136,204,0.4);}
-.telegram-icon{ width:24px; height:24px; margin-right:0.75rem; fill:currentColor;}
+.telegram-btn:hover{ background:#006ba3; transform:scale(1.05) rotate(-2deg); box-shadow:0 6px 20px rgba(0,136,204,0.4);}
+.telegram-icon{ width:24px; height:24px; margin-right:0.75rem; fill:currentColor; }
 
 /* Footer */
 .footer{text-align:center; color:#9ca3af; font-size:0.875rem; margin-top:3rem; padding:2rem 1rem; border-top:1px solid rgba(255,255,255,0.1);}
@@ -123,14 +122,12 @@ background: linear-gradient(45deg,#f72585,#4361ee,#4cc9f0);
 @keyframes fadeInUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.7;}}
 
-/* Responsive */
 @media(max-width:768px){
 .brand-title{font-size:3rem;}
 .coming-soon-text{font-size:1.5rem;}
 .countdown{grid-template-columns:repeat(2,1fr); max-width:400px;}
 .features-grid{grid-template-columns:1fr;}
 }
-
 </style>
 </head>
 <body>
@@ -145,7 +142,6 @@ background: linear-gradient(45deg,#f72585,#4361ee,#4cc9f0);
         <div class="bg-circle" style="width:50px; height:50px; left:70%; animation-duration:22s;"></div>
     </div>
 
-    <!-- Content -->
     <div class="content">
         <!-- Logo -->
         <section class="logo-section">
@@ -170,68 +166,42 @@ background: linear-gradient(45deg,#f72585,#4361ee,#4cc9f0);
 
         <!-- Countdown -->
         <section class="countdown" id="countdown">
-            <div class="countdown-item">
-                <span class="countdown-number" id="days">00</span>
-                <span class="countdown-label">Days</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="hours">00</span>
-                <span class="countdown-label">Hours</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="minutes">00</span>
-                <span class="countdown-label">Minutes</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="seconds">00</span>
-                <span class="countdown-label">Seconds</span>
-            </div>
+            <div class="countdown-item"><span class="countdown-number" id="days">00</span><span class="countdown-label">Days</span></div>
+            <div class="countdown-item"><span class="countdown-number" id="hours">00</span><span class="countdown-label">Hours</span></div>
+            <div class="countdown-item"><span class="countdown-number" id="minutes">00</span><span class="countdown-label">Minutes</span></div>
+            <div class="countdown-item"><span class="countdown-number" id="seconds">00</span><span class="countdown-label">Seconds</span></div>
         </section>
 
         <!-- Features -->
         <section class="features">
             <h2 class="section-title">What's Coming</h2>
             <div class="features-grid">
-                <div class="feature-card">
-                    <i class="feature-icon fas fa-gem"></i>
-                    <h3 class="feature-title">Premium Experience</h3>
-                    <p class="feature-desc">Luxury redefined with cutting-edge technology and elegant design.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="feature-icon fas fa-rocket"></i>
-                    <h3 class="feature-title">Lightning Fast</h3>
-                    <p class="feature-desc">Next-generation performance that delivers speed and responsiveness.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="feature-icon fas fa-shield-alt"></i>
-                    <h3 class="feature-title">Ultra Secure</h3>
-                    <p class="feature-desc">State-of-the-art security measures protect your data and privacy.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="feature-icon fas fa-magic"></i>
-                    <h3 class="feature-title">AI Powered</h3>
-                    <p class="feature-desc">Intelligent features that adapt to your needs for a personalized experience.</p>
-                </div>
+                <div class="feature-card"><i class="feature-icon fas fa-gem"></i><h3 class="feature-title">Premium Experience</h3><p class="feature-desc">Luxury redefined with cutting-edge technology and elegant design.</p></div>
+                <div class="feature-card"><i class="feature-icon fas fa-rocket"></i><h3 class="feature-title">Lightning Fast</h3><p class="feature-desc">Next-generation performance that delivers speed and responsiveness.</p></div>
+                <div class="feature-card"><i class="feature-icon fas fa-shield-alt"></i><h3 class="feature-title">Ultra Secure</h3><p class="feature-desc">State-of-the-art security measures protect your data and privacy.</p></div>
+                <div class="feature-card"><i class="feature-icon fas fa-magic"></i><h3 class="feature-title">AI Powered</h3><p class="feature-desc">Intelligent features that adapt to your needs for a personalized experience.</p></div>
             </div>
         </section>
 
         <!-- About -->
         <section class="about">
             <h2 class="section-title">About Luxora</h2>
-            <div class="about-card">
-                <p class="about-text">
-                    Luxora is proudly created by Shri Groups in India. We combine luxury with innovation, creating products that are both beautiful and functional.
-                </p>
-            </div>
+            <div class="about-card"><p class="about-text">Luxora is proudly created by Shri Groups in India. We combine luxury with innovation, creating products that are both beautiful and functional.</p></div>
         </section>
 
         <!-- Telegram -->
         <section class="telegram-section">
             <p class="telegram-text">Stay updated with our Telegram channel</p>
-            <a href="https://t.me/+C5gErLhmU2MxOWNl" target="_blank" class="telegram-btn">
-                <svg class="telegram-icon" viewBox="0 0 24 24">
-                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.14.141-.259.259-.374.261l.213-3.053 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.136-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
-                </svg>
+            <a href="tg://join?invite=C5gErLhmU2MxOWNl" 
+               onclick="window.open('https://t.me/+C5gErLhmU2MxOWNl','_blank'); return true;" 
+               target="_blank" class="telegram-btn">
+                <svg class="telegram-icon" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 
+                12 12 12-5.373 12-12S18.627 0 12 0zm5.894 
+                8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 
+                1.394c-.14.141-.259.259-.374.261l.213-3.053 
+                5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 
+                4.326-2.96-.924c-.64-.203-.658-.64.136-.954l11.566-4.458c.538-.196 
+                1.006.128.832.941z"/></svg>
                 Join Our Telegram
             </a>
         </section>
@@ -246,7 +216,6 @@ background: linear-gradient(45deg,#f72585,#4361ee,#4cc9f0);
 </div>
 
 <script>
-// Countdown Timer
 function updateCountdown() {
     const launchDate = new Date('October 1, 2025 00:00:00').getTime();
     const now = new Date().getTime();
